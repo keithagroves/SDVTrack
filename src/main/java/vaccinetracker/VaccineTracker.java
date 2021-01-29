@@ -24,6 +24,11 @@ public class VaccineTracker {
 			v.shutdown();
 			Thread.sleep(SITE_CHECK_INTERVAL);
 		}
+		try {
+			v.openBrowser();
+		}catch (Exception e ) {
+			System.err.print("this only works on mac.");
+		}
 		v.alarm();
 	}
 
