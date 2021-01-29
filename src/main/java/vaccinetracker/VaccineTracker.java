@@ -1,15 +1,8 @@
 package vaccinetracker;
 
 import java.awt.Toolkit;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.List;
-
-import javax.xml.bind.DatatypeConverter;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
