@@ -1,15 +1,12 @@
 package vaccinetracker;
 
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
 import java.time.format.FormatStyle;
 import java.util.List;
 
@@ -18,7 +15,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 
 import org.openqa.selenium.By;
@@ -33,7 +29,7 @@ public class VaccineTracker {
 	WebDriver driver;
 	public static final int SITE_CHECK_INTERVAL = 1000 * 60;
 	public static final String SITE_URL = "https://epicproxy.et0502.epichosted.com/ucsd/SignupAndSchedule/EmbeddedSchedule?dept=9990995&id=99909951,99909952,99909953,99909954,99909955,99909956&vt=3550&view=plain&payor=-3#";
-	public static final int LOADING_TIME = 6000;
+	public static final int LOADING_TIME = 10000;
 
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
