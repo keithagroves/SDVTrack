@@ -33,7 +33,7 @@ public class VaccineTracker {
 	WebDriver driver;
 	public static final int SITE_CHECK_INTERVAL = 1000 * 60;
 	public static final String SITE_URL = "https://epicproxy.et0502.epichosted.com/ucsd/SignupAndSchedule/EmbeddedSchedule?dept=9990995&id=99909951,99909952,99909953,99909954,99909955,99909956&vt=3550&view=plain&payor=-3#";
-	public static final int LOADING_TIME = 5000;
+	public static final int LOADING_TIME = 6000;
 
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
@@ -54,12 +54,12 @@ public class VaccineTracker {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 		frame.add(panel);
-		panel.setLayout(new GridLayout(2,1));
+		panel.setLayout(new GridLayout(3,1));
 		JButton button = new JButton("start");
 		panel.add(button);
 		panel.add(label);
 		button.addActionListener(e -> {
-			button.setText("started");
+			button.setText("seaching for an available appointment. This will take a while...");
 			button.setEnabled(false);
 			new Thread(() -> {
 				try {
