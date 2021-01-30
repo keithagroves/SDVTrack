@@ -80,20 +80,20 @@ public class VaccineTracker {
 		driver.get(SITE_URL);
 		Thread.sleep(LOADING_TIME);
 		List<WebElement> spans = driver.findElements(By.tagName("span"));
-		boolean noUpdates = true;
+		boolean updates = true;
 		for (WebElement span : spans) {
 			if (span.isDisplayed()) {
 				System.out.println(span.getText());
 				if (span.getText()
 						.contains("Sorry, we couldn't find any open appointments. Please check back later.")) {
 					System.out.println("no updates :(");
-					noUpdates = false;
+					updates = false;
 				}
 			}
 		}
 		label.setText("last checked: "+ DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT).format(ZonedDateTime.of(LocalDateTime.now(),ZoneId.of("America/Los_Angeles"))));
 		frame.pack();
-		return noUpdates;
+		return updates;
 	}
 
 	public WebDriver initializeBrowser() {
@@ -130,10 +130,12 @@ public class VaccineTracker {
 	}
 
 	void run() throws Exception {
-
+		long lastStartTime = System.currentTimeMillis();
 		while (!this.start()) {
 			this.shutdown();
-			Thread.sleep(SITE_CHECK_INTERVAL);
+			long timeLeft = Math.max(SITE_CHECK_INTERVAL - (System.currentTimeMillis()-lastStartTime), 0);
+			Thread.sleep(timeLeft);
+			lastStartTime = System.currentTimeMillis();
 		}
 		try {
 			this.openBrowser();
